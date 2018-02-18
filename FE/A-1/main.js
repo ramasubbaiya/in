@@ -1,7 +1,7 @@
 // check button
 function checkMe() {
     let input = document.getElementById('inputNumber').value;
-    let outputText = "Please enter a valid number!";
+    let outputText = 'Please enter a valid number!';
 
     // check input is greater than zero, if not ask to reenter the number
     if (input > 0) {
@@ -13,11 +13,13 @@ function checkMe() {
 }
 
 // isPrimeNumber gets a number greater than zero as an arguments, returns true when the input is a prime number else it is false
-function isPrimeNumber(input) {
+var isPrimeNumber = function(input) {
 
     if (input < 2) return false;
 
-    for (let i = 2; i <= (input / 2); i++) {
+    if (input % 2 == 0) return false;
+
+    for (let i = 3; i <= (input / 2); i++) {
         if (input % i == 0) {
             return false;
         }
