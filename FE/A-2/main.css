@@ -1,0 +1,42 @@
+/* All elements should have red border that is 2px thick  */
+
+.red-border {
+    border: 2px solid red;
+}
+
+
+/* First two element should be of font size 15px */
+
+.font-size-15 {
+    font-size: 15px;
+}
+
+
+/* Last three elements should be of font size 20px */
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+
+/*Each element has different background color */
+
+div:nth-child(1) {
+    background-color: #FF7F50;
+}
+
+div:nth-child(2) {
+    background-color: #FF6347;
+}
+
+div:nth-child(3) {
+    background-color: #FF4500;
+}
+
+div:nth-child(4) {
+    background-color: #FFD700;
+}
+
+div:nth-child(5) {
+    background-color: #FFA500;
+}
