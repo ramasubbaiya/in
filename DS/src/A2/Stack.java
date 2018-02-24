@@ -6,7 +6,6 @@ package A2;
  */
 public class Stack {
 
-	int size = 0; // Size of the stack
 	int count = -1; // To hold the pointer for the current value and measure the size of the stack
 	int[] stackArr = null; // Initialize stack array
 	
