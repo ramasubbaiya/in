@@ -6,43 +6,43 @@ package A1;
  */
 public class LinkedList {
 
-	int count = -1;
 	Node firstNode = null;
 	
+	// Insert element in the first and point the firstNode to this newly created node
 	public void insertFirst(int data) {
 		Node newNode = new Node();
 		newNode.data = data;
-		if(isEmpty()) {
-			firstNode = newNode;
-		} else {
-			Node tempNode = firstNode;
-			firstNode = newNode;
-			newNode.next = tempNode;
-		}
-		count++;
+		newNode.next = firstNode;
+		firstNode = newNode;
 	}
 	
+	// Delete first element from the list
+	public void deleteFirst() {
+		Node tempNode = firstNode;
+		firstNode = tempNode.next;
+	}
+
+	// Insert element in the end of the list
 	public void insertLast(int data) {
 		Node newNode = new Node();
 		newNode.data = data;
-		if(isEmpty()) {
-			firstNode = newNode;
-		} else {
-			Node currentNode = firstNode;
-			// loop to end of the list
-			while(currentNode.next != null) {
-				currentNode = currentNode.next;
-			}
-			// attach new node to the end of the list
-			currentNode.next = newNode;
-		}
+		
+		Node currentNode = firstNode;
+		// loop to end of the list
+		while (currentNode != null) {
+			currentNode = currentNode.next;
+		}		
+		currentNode = newNode;
 	}
 	
+	// Delete element based on the element provided
 	public void delete(int data) {
 		Node currentNode = firstNode;
+		
+		// Data found in the first node
 		if(firstNode.data == data) {
 			firstNode = firstNode.next;
-		} else {
+		} else { // Data found in other nodes
 			Node previousNode = null;
 			// loop to end of the list
 			while(currentNode.next != null) {
@@ -55,39 +55,49 @@ public class LinkedList {
 		}
 	}
 	
+	// display the whole list
 	public void displayList() {
 		if(isEmpty()) {
 			System.err.println("List is empty");
 		} else {
 			Node currentNode = firstNode;
-			while(currentNode.next != null) {
+			while(currentNode != null) {
 				System.out.println(" { Node : " + currentNode + ", Data : " + currentNode.data + " } ");
 				currentNode = currentNode.next;
 			}
-			System.out.println(" { Node : " + currentNode + ", Data : " + currentNode.data + " } "); // last node with next node null
+			System.out.println(" -------------------------------------------------------------------- ");
 		}
 	}
 	
+	// check linked list is empty
 	public boolean isEmpty() {
 		return (firstNode == null);
 	}
 	
+	// Test the above methods
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
-		list.insertFirst(4);
-		list.insertFirst(3);
-		list.insertFirst(5);
+		
+		// Store 1 to 50 in linked list
+		for(int i=1; i<=50;i++) {
+			list.insertFirst(i);
+		}
+		list.displayList();
+		
+		// Delete first element from the list
+		list.deleteFirst();
 		list.displayList();
 		System.out.println();
-		list.delete(5);
+		
+		// Delete 49 from the list
+		list.delete(49);
+		System.out.println();
 		list.displayList();
 	}
 }
 
 /**
- * 
- * @author Rama
- *
+ * Create a node class with data and Node
  */
 class Node {
 	int data;
