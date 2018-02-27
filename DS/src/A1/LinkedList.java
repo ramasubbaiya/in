@@ -6,20 +6,20 @@ package A1;
  */
 public class LinkedList {
 
-	Node firstNode = null;
+	Node headNode = null;
 	
 	// Insert element in the first and point the firstNode to this newly created node
 	public void insertFirst(int data) {
 		Node newNode = new Node();
 		newNode.data = data;
-		newNode.next = firstNode;
-		firstNode = newNode;
+		newNode.next = headNode;
+		headNode = newNode;
 	}
 	
 	// Delete first element from the list
 	public void deleteFirst() {
-		Node tempNode = firstNode;
-		firstNode = tempNode.next;
+		Node tempNode = headNode;
+		headNode = tempNode.next;
 	}
 
 	// Insert element in the end of the list
@@ -27,7 +27,7 @@ public class LinkedList {
 		Node newNode = new Node();
 		newNode.data = data;
 		
-		Node currentNode = firstNode;
+		Node currentNode = headNode;
 		// loop to end of the list
 		while (currentNode != null) {
 			currentNode = currentNode.next;
@@ -37,11 +37,11 @@ public class LinkedList {
 	
 	// Delete element based on the element provided
 	public void delete(int data) {
-		Node currentNode = firstNode;
+		Node currentNode = headNode;
 		
 		// Data found in the first node
-		if(firstNode.data == data) {
-			firstNode = firstNode.next;
+		if(headNode.data == data) {
+			headNode = headNode.next;
 		} else { // Data found in other nodes
 			Node previousNode = null;
 			// loop to end of the list
@@ -60,7 +60,7 @@ public class LinkedList {
 		if(isEmpty()) {
 			System.err.println("List is empty");
 		} else {
-			Node currentNode = firstNode;
+			Node currentNode = headNode;
 			while(currentNode != null) {
 				System.out.println(" { Node : " + currentNode + ", Data : " + currentNode.data + " } ");
 				currentNode = currentNode.next;
@@ -71,7 +71,7 @@ public class LinkedList {
 	
 	// check linked list is empty
 	public boolean isEmpty() {
-		return (firstNode == null);
+		return (headNode == null);
 	}
 	
 	// Test the above methods
@@ -93,6 +93,8 @@ public class LinkedList {
 		list.delete(49);
 		System.out.println();
 		list.displayList();
+		
+		
 	}
 }
 
