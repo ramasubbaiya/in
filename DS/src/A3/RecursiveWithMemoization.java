@@ -2,27 +2,22 @@ package A3;
 
 public class RecursiveWithMemoization {
 
-	// count param to know the no. of iteration
-	static int count = 0;
+	static int count = 0; // count param to know the no. of iteration
+	static int[] fibnacciArr = new int[100]; // maximum value that can be given to array or is 100
 	
 	// Fibonacci with memorization of pre-calculated data
 	public static int fibonacci(int n) {
-		int[] fibnacciArr = new int[100];
-		System.out.println(n);
+		count++;
 		if(fibnacciArr[n] == 0) {
-			count++;
 			if(n == 0) {
-				fibnacciArr[0] = 0;
-				return 0;
+				fibnacciArr[n] = 0;
 			} else if(n == 1) {
-				fibnacciArr[1] = 1;
-				return 1;
+				fibnacciArr[n] = 1;
 			} else {
 				fibnacciArr[n] = fibonacci(n-1) + fibonacci(n-2);
-				return fibnacciArr[n];
 			}
+			return fibnacciArr[n];
 		} else {
-			System.out.println("sdsd");
 			return fibnacciArr[n];
 		}
 	}
@@ -31,6 +26,6 @@ public class RecursiveWithMemoization {
 	// Testing the outputs
 	public static void main(String[] args) {
 		System.out.println(fibonacci(10));
-		System.out.println(count);
+		System.out.println(count); // count for fibonacci without memoization is 177, where as here we have a lot improved result of 19
 	}
 }
