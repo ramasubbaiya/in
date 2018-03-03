@@ -19,7 +19,7 @@
 }
 
 
-/*Each element has different background color */
+/* Each element has different background color */
 
 div:nth-child(1) {
     background-color: #FF7F50;
