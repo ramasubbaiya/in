@@ -19,7 +19,7 @@ var isPrimeNumber = function(input) {
 
     if (input % 2 == 0) return false;
 
-    for (let i = 3; i <= (input / 2); i++) {
+    for (let i = 3; i <= Math.floor(Math.sqrt(input)); i += 2) {
         if (input % i == 0) {
             return false;
         }
