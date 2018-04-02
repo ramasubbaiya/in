@@ -1,5 +1,8 @@
 package A5;
 
+import sun.misc.Queue;
+
+
 /**
  * Implementing Binary Search Tree
  * Binary trees are always sorted
@@ -17,7 +20,7 @@ public class BinarySearchTree {
 	}
 	
 	public Node search(int value) {
-		if(root != null)
+		if(root != null) 
 		return root.find(value);
 		return null;
 	}
@@ -31,17 +34,54 @@ public class BinarySearchTree {
 		
 	}
 	
-	public void traverseInOrder() {
-		if (this.root != null)
-			this.root.traverseInOrder();
-		System.out.println();
+	public void preOrderTraversal(Node root) {
+		if(root == null) return;
+		
+		System.out.println(root.data);
+		preOrderTraversal(root.leftChild);
+		preOrderTraversal(root.rightChild);		
+	}
+	
+	public void inOrderTraversal(Node root) {
+		if(root == null) return;
+		
+		inOrderTraversal(root.leftChild);
+		System.out.println(root.data);
+		inOrderTraversal(root.rightChild);
+	}
+	
+	public void postOrderTraversal(Node root) {
+		if(root == null) return;
+		
+		postOrderTraversal(root.leftChild);
+		postOrderTraversal(root.rightChild);
+		System.out.println(root.data);
+	}
+
+	
+	public void breathFirstTraversal() throws InterruptedException {
+		if(root == null) return;
+		Queue<Node> queue = new Queue<Node>();
+		queue.enqueue(root);
+		while(!queue.isEmpty()) {
+			Node node = queue.dequeue();
+			System.out.println(node.data);
+			
+			if(node.leftChild != null) {
+				queue.enqueue(node.leftChild);
+			}
+			
+			if(node.rightChild != null) {
+				queue.enqueue(node.rightChild);
+			}
+		}
 	}
 
 }
 
 class Node {
-	Node leftNode;
-	Node rightNode;
+	Node leftChild;
+	Node rightChild;
 	int data;
 	
 	public Node(int data) {
@@ -52,36 +92,28 @@ class Node {
 		if(this.data == data) // found in the root on the first iteration
 			return this;
 		
-		if(data < this.data && leftNode != null)
-			return leftNode.find(data); // data is smaller
-		if(rightNode != null) 
-			return rightNode.find(data); // data is larger
+		if(data < this.data && leftChild != null)
+			return leftChild.find(data); // data is smaller
+		if(rightChild != null) 
+			return rightChild.find(data); // data is larger
 		
 		return null; // not found
 	}
 	
 	public void insert(int data) {
 		if(data >= this.data) {
-			if(rightNode == null) { // end clause
-				rightNode = new Node(data); // insert data to the right child
+			if(rightChild == null) { // end clause
+				rightChild = new Node(data); // insert data to the right child
 			} else {
-				rightNode.insert(data); // recursively insert data into the right child
+				rightChild.insert(data); // recursively insert data into the right child
 			}
 		} else {
-			if(leftNode == null) {
-				leftNode = new Node(data); // insert data to the left child
+			if(leftChild == null) {
+				leftChild = new Node(data); // insert data to the left child
 			} else {
-				leftNode.insert(data); // recursively insert data into the left child
+				leftChild.insert(data); // recursively insert data into the left child
 			}
 		}
-	}
-	
-	public void traverseInOrder() {
-		if (this.leftNode != null)
-			this.leftNode.traverseInOrder();
-		System.out.print(this + " ");
-		if (this.rightNode != null)
-			this.rightNode.traverseInOrder();
 	}
 	
 	public void delete(int data) {
