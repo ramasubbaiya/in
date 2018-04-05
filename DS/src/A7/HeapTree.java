@@ -9,4 +9,8 @@ public class HeapTree {
 	public void rightChild() {
 		
 	}
+	
+	public void heapify() {
+		
+	}
 }
