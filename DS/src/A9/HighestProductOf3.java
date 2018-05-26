@@ -12,8 +12,10 @@ public class HighestProductOf3 {
 			System.out.println(Arrays.toString(arrayOfInts));
 			int size = arrayOfInts.length - 1;
 			int maxProduct = Math.max(
-					arrayOfInts[size]*arrayOfInts[size-1]*arrayOfInts[size-2], // last 3 numbers (positive * positive * positive)
-					arrayOfInts[size]*arrayOfInts[0]*arrayOfInts[1] // first 2 numbers(negative * negative - positive, last positive number)
+					// last 3 numbers (positive * positive * positive)
+					arrayOfInts[size]*arrayOfInts[size-1]*arrayOfInts[size-2],
+					// first 2 numbers(negative * negative - positive, last positive number)
+					arrayOfInts[size]*arrayOfInts[0]*arrayOfInts[1]
 							);
 			return maxProduct;
 		}
@@ -23,5 +25,6 @@ public class HighestProductOf3 {
 	
 	public static void main(String[] args) {
 		System.out.println(getMaxProd(new int[]{6, 5, 1, -12, -11, -10, -1, 3, -4}));
+		// 792
 	}
 }
