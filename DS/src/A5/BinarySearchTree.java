@@ -31,7 +31,6 @@ public class BinarySearchTree {
 		} else {
 			root.insert(value);
 		}
-		
 	}
 	
 	public void preOrderTraversal(Node root) {
